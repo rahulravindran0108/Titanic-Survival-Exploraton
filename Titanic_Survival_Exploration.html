@@ -1269,7 +1269,7 @@ Fill in the missing code below so that the function will make this prediction.<b
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="k">def</span> <span class="nf">predictions_2</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
@@ -1282,7 +1282,7 @@ Fill in the missing code below so that the function will make this prediction.<b
         <span class="k">if</span> <span class="n">passenger</span><span class="p">[</span><span class="s">&#39;Sex&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;female&#39;</span><span class="p">:</span>
             <span class="n">predictions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">passenger</span><span class="p">[</span><span class="s">&#39;Age&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">passenger</span><span class="p">[</span><span class="s">&#39;Age&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
                 <span class="n">predictions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">predictions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -1295,6 +1295,27 @@ Fill in the missing code below so that the function will make this prediction.<b
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansired">---------------------------------------------------------------------------</span>
+<span class="ansired">NameError</span>                                 Traceback (most recent call last)
+<span class="ansigreen">&lt;ipython-input-1-e3e7ec0dbd33&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
+<span class="ansigreen">     18</span> <span class="ansiblue"></span>
+<span class="ansigreen">     19</span> <span class="ansired"># Make the predictions</span><span class="ansiblue"></span><span class="ansiblue"></span>
+<span class="ansigreen">---&gt; 20</span><span class="ansired"> </span>predictions <span class="ansiblue">=</span> predictions_2<span class="ansiblue">(</span>data<span class="ansiblue">)</span><span class="ansiblue"></span>
+
+<span class="ansired">NameError</span>: name &apos;data&apos; is not defined</pre>
+</div>
+</div>
+
 </div>
 </div>
 
