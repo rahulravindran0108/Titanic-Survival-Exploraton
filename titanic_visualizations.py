@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -49,13 +51,13 @@ def survival_stats(data, outcomes, key, filters = []):
     
     # Check that the key exists
     if key not in data.columns.values :
-        print "'{}' is not a feature of the Titanic data. Did you spell something wrong?".format(key)
+        print("'{}' is not a feature of the Titanic data. Did you spell something wrong?".format(key))
         return False
 
     # Return the function before visualizing if 'Cabin' or 'Ticket'
     # is selected: too many unique categories to display
     if(key == 'Cabin' or key == 'PassengerId' or key == 'Ticket'):
-        print "'{}' has too many unique categories to display! Try a different feature.".format(key)
+        print("'{}' has too many unique categories to display! Try a different feature.".format(key))
         return False
 
     # Merge data and outcomes into single dataframe
@@ -73,8 +75,8 @@ def survival_stats(data, outcomes, key, filters = []):
     if(key == 'Age' or key == 'Fare'):
        
         # Divide the range of data into bins and count survival rates
-        min_value = all_data[key].min()
-        max_value = all_data[key].max()
+        min_value = np.nanmin(all_data[key])
+        max_value = np.nanmax(all_data[key])
         value_range = max_value - min_value
 
         # 'Fares' has larger range of values than 'Age' so create more bins
@@ -86,9 +88,9 @@ def survival_stats(data, outcomes, key, filters = []):
         # Overlay each bin's survival rates
         nonsurv_vals = all_data[all_data['Survived'] == 0][key].reset_index(drop = True)
         surv_vals = all_data[all_data['Survived'] == 1][key].reset_index(drop = True)
-        plt.hist(nonsurv_vals, bins = bins, alpha = 0.6,
+        plt.hist(nonsurv_vals, bins = bins, alpha = 0.6, range=(bins.min(),bins.max()),
                  color = 'red', label = 'Did not survive')
-        plt.hist(surv_vals, bins = bins, alpha = 0.6,
+        plt.hist(surv_vals, bins = bins, alpha = 0.6, range=(bins.min(),bins.max()),
                  color = 'green', label = 'Survived')
     
         # Add legend to plot
@@ -102,7 +104,7 @@ def survival_stats(data, outcomes, key, filters = []):
         if(key == 'Pclass'):
             values = np.arange(1,4)
         if(key == 'Parch' or key == 'SibSp'):
-            values = np.arange(0,np.max(data[key]) + 1)
+            values = np.arange(0, np.nanmax(data[key]) + 1)
         if(key == 'Embarked'):
             values = ['C', 'Q', 'S']
         if(key == 'Sex'):
@@ -135,6 +137,6 @@ def survival_stats(data, outcomes, key, filters = []):
     # Report number of passengers with missing values
     if sum(pd.isnull(all_data[key])):
         nan_outcomes = all_data[pd.isnull(all_data[key])]['Survived']
-        print "Passengers with missing '{}' values: {} ({} survived, {} did not survive)".format( \
-              key, len(nan_outcomes), sum(nan_outcomes == 1), sum(nan_outcomes == 0))
+        print("Passengers with missing '{}' values: {} ({} survived, {} did not survive)".format( \
+              key, len(nan_outcomes), sum(nan_outcomes == 1), sum(nan_outcomes == 0)))
 
