@@ -1,3 +1,18 @@
 matplotlib==2.0.2
 numpy==1.12.1
 pandas==0.20.3
+# check my repo for titanic survival and look how using the requirements and putting two more file to make the model deploy it on heroku.
+This will help your model to be used by others on the web .This will help you to make a web app in future if you keep on practising this using flask and Heroku .
+This further step will also make your resume attractive.
+changes made in requirement.txt
+Flask==1.1.1
+gunicorn==19.9.0
+itsdangerous==1.1.0
+Jinja2==2.10.1
+MarkupSafe==1.1.1
+Werkzeug==0.15.5
+numpy>=1.9.2
+scipy>=0.15.1
+scikit-learn>=0.18
+matplotlib>=1.4.3
+pandas>=0.19
